@@ -11,6 +11,7 @@ class SmartLoadingBar extends LitElement {
     .wrapper {
       text-align: center;
       margin-top: 20px;
+      --loading-bar-color: linear-gradient(to right,#d3c357,#f1a76a,#cc6d2e);
     }
 
     .bar-title {
@@ -26,7 +27,6 @@ class SmartLoadingBar extends LitElement {
         transform: scale(0.7);
       }
     }
-
   `;
 
   constructor() {
@@ -40,10 +40,17 @@ class SmartLoadingBar extends LitElement {
         <div class="bar-title">
           <p>${this.title}</p>
         </div>
-        <epic-loading-bar></epic-loading-bar>
+        <epic-loading-bar class="bar" @click="${this._handleClick}"></epic-loading-bar>
       </div>
     `;
   }
+
+  _handleClick() {
+    const bar = this.shadowRoot.querySelector('.bar').shadowRoot.querySelector(".loading-bar");
+    bar.style.background = "pink";
+  }
+
+
 }
 
 customElements.define('smart-loading-bar', SmartLoadingBar);

@@ -25,7 +25,7 @@ class EpicLoadingBar extends LitElement {
       height: 50px;
       border-radius: 15px;
       margin: 3px;
-      background: var(--loading-bar-color, linear-gradient(to right,#d3c357,#f1a76a,#cc6d2e));
+      background: var(--loading-bar-color, yellow);
       transition: width 2s;
     }
   `;

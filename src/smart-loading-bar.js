@@ -4,6 +4,7 @@ import "./epic-loading-bar.js";
 class SmartLoadingBar extends LitElement {
   static properties = {
     title: { type: String },
+    counter: { type: Int16Array }
   }
 
   static styles = css`
@@ -32,6 +33,18 @@ class SmartLoadingBar extends LitElement {
   constructor() {
     super();
     this.title = 'Rspack';
+    this.counter = '50';
+    this.count();
+  }
+
+  _handleClick() {
+    const bar = this.shadowRoot.querySelector('.bar').shadowRoot.querySelector(".loading-bar");
+    bar.style.width = this.counter + "%";
+    this.counter++;
+  }
+
+  count() {
+    this.counter++; 
   }
 
   render() {
@@ -42,12 +55,8 @@ class SmartLoadingBar extends LitElement {
         </div>
         <epic-loading-bar class="bar" @click="${this._handleClick}"></epic-loading-bar>
       </div>
+      <p>${this.counter}</p>
     `;
-  }
-
-  _handleClick() {
-    const bar = this.shadowRoot.querySelector('.bar').shadowRoot.querySelector(".loading-bar");
-    bar.style.background = "pink";
   }
 
 

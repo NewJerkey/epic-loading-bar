@@ -7,6 +7,9 @@ class SmartLoadingBar extends IntersectionObserverMixin(LitElement) {
   static properties = {
     title: { type: String },
     duration: { type: Number },
+    start: { type: Number },
+    end: { type: Number },
+    decimals: { type: Number }
   }
 
   static styles = css`
@@ -46,7 +49,10 @@ class SmartLoadingBar extends IntersectionObserverMixin(LitElement) {
   constructor() {
     super();
     this.title = 'Rspack';
-    this.duration = '10';
+    this.duration = 10;
+    this.start = 0;
+    this.end = 10;
+    this.decimals = 2;
   }
 
   render() {
@@ -56,7 +62,13 @@ class SmartLoadingBar extends IntersectionObserverMixin(LitElement) {
           <p>${this.title}</p>
         </div>
         <epic-loading-bar class="bar" ></epic-loading-bar>
-        <count-up class="counter"></count-up>
+        <count-up 
+          class="counter" 
+          duration=${this.duration} 
+          start=${this.start} 
+          end=${this.end}
+          decimalplaces=${this.decimals}>
+        </count-up>
       </div>
 
     `;

@@ -136,18 +136,21 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
        */
       start: {
         type: Number,
+        reflect: true
       },
       /**
        * End point for counting stopping
        */
       end: {
         type: Number,
+        reflect: true
       },
       /**
        * Duration to count
        */
       duration: {
         type: Number,
+        reflect: true
       },
       /**
        * Disable easing animation
@@ -160,6 +163,7 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
        */
       decimalplaces: {
         type: Number,
+        reflect: true
       },
       /**
        * separator for 100s groupings
@@ -184,6 +188,7 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
        */
       suffixtext: {
         type: String,
+        reflect: true
       },
       thresholds: {
         type: Array,

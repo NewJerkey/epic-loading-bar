@@ -16,9 +16,9 @@ class EpicLoadingBar extends LitElement {
       vertical-align: middle;
     }
 
-    .bar-wrapper:hover .loading-bar {
+    /* .bar-wrapper:hover .loading-bar {
       width: 99.25%;
-    }
+    } */
 
     .loading-bar {
       width: 0%;
@@ -26,7 +26,7 @@ class EpicLoadingBar extends LitElement {
       border-radius: 15px;
       margin: 3px;
       background: var(--loading-bar-color, yellow);
-      transition: width 2s;
+      transition: width 2s linear;
     }
   `;
 

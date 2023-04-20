@@ -36,12 +36,24 @@ class SmartLoadingBar extends IntersectionObserverMixin(LitElement) {
     .counter {
       position: absolute;
       left: 79%;
-      bottom: 38%;
+      bottom: 36%;
     }
 
     @media (max-width: 500px) {
       .wrapper {
         transform: scale(0.7);
+      }
+      .counter {
+        left: 88%;
+      }
+    }
+
+    @media (max-width: 800px) and (min-width: 500px) {
+      .wrapper {
+        transform: scale(0.7);
+      }
+      .counter {
+        left: 84%;
       }
     }
   `;
@@ -67,7 +79,8 @@ class SmartLoadingBar extends IntersectionObserverMixin(LitElement) {
           duration=${this.duration} 
           start=${this.start} 
           end=${this.end}
-          decimalplaces=${this.decimals}>
+          decimalplaces=${this.decimals}
+          noeasing=true>
         </count-up>
       </div>
 
@@ -79,7 +92,7 @@ class SmartLoadingBar extends IntersectionObserverMixin(LitElement) {
       if (propName == "elementVisible" && this[propName]) {
         const bar = this.shadowRoot.querySelector('.bar').shadowRoot.querySelector(".loading-bar");
         bar.style.width = "99.25%";
-        bar.style.transition = "width " + this.duration + "s";
+        bar.style.transition = "width " + this.duration + "s linear";
       }
     });
   }

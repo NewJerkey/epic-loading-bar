@@ -1,10 +1,12 @@
 import { LitElement, html, css } from 'lit';
 import "./epic-loading-bar.js";
+import "./count-up.js";
+import { IntersectionObserverMixin } from "@lrnwebcomponents/intersection-element/lib/IntersectionObserverMixin.js";
 
-class SmartLoadingBar extends LitElement {
+class SmartLoadingBar extends IntersectionObserverMixin(LitElement) {
   static properties = {
     title: { type: String },
-    counter: { type: Int16Array }
+    duration: { type: Number },
   }
 
   static styles = css`
@@ -12,6 +14,7 @@ class SmartLoadingBar extends LitElement {
     .wrapper {
       text-align: center;
       margin-top: 20px;
+      position: relative;
       --loading-bar-color: linear-gradient(to right,#d3c357,#f1a76a,#cc6d2e);
     }
 
@@ -19,8 +22,18 @@ class SmartLoadingBar extends LitElement {
         display: inline-block;
         font-family: "Inter var experimental", "Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
         color: #8e8e8e;
-        margin-right: 50px;
         min-width: 180px;
+    }
+
+    .bar {
+      position: center;
+      margin-left: 50px;
+    }
+
+    .counter {
+      position: absolute;
+      left: 79%;
+      bottom: 38%;
     }
 
     @media (max-width: 500px) {
@@ -33,18 +46,7 @@ class SmartLoadingBar extends LitElement {
   constructor() {
     super();
     this.title = 'Rspack';
-    this.counter = '50';
-    this.count();
-  }
-
-  _handleClick() {
-    const bar = this.shadowRoot.querySelector('.bar').shadowRoot.querySelector(".loading-bar");
-    bar.style.width = this.counter + "%";
-    this.counter++;
-  }
-
-  count() {
-    this.counter++; 
+    this.duration = '10';
   }
 
   render() {
@@ -53,13 +55,22 @@ class SmartLoadingBar extends LitElement {
         <div class="bar-title">
           <p>${this.title}</p>
         </div>
-        <epic-loading-bar class="bar" @click="${this._handleClick}"></epic-loading-bar>
+        <epic-loading-bar class="bar" ></epic-loading-bar>
+        <count-up class="counter"></count-up>
       </div>
-      <p>${this.counter}</p>
+
     `;
   }
 
-
+  updated(propertiesChanged) {
+    propertiesChanged.forEach((oldValue, propName) => {
+      if (propName == "elementVisible" && this[propName]) {
+        const bar = this.shadowRoot.querySelector('.bar').shadowRoot.querySelector(".loading-bar");
+        bar.style.width = "99.25%";
+        bar.style.transition = "width " + this.duration + "s";
+      }
+    });
+  }
 }
 
 customElements.define('smart-loading-bar', SmartLoadingBar);

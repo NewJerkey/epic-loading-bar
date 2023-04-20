@@ -19,7 +19,7 @@ export class BarApp extends LitElement {
   }
 
   updateBars() {
-    // const address = '../api/badges';
+    // const address = '../api/bars';
     const address = "../assets/bar-map.json";
     fetch(address)
       .then((response) => {
@@ -41,7 +41,7 @@ export class BarApp extends LitElement {
 
   render() {
     return html`
- 
+        
       `;
   }
 }

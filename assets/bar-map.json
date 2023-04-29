@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Rspack",
+        "duration": 10,
+        "start": 0,
+        "end": 10,
+        "decimals": 2,
+        "accessibilityLabel": "Bar Graphic that show how long to load a bar"
+    },
+    {
+        "title": "Illegal Downloads",
+        "duration": 20,
+        "start": 0,
+        "end": 20,
+        "decimals": 2,
+        "accessibilityLabel": "Bar Graphic that show how long to load a bar"
+    },
+    {
+        "title": "Shrek 5",
+        "duration": 10,
+        "start": 10,
+        "end": 20,
+        "decimals": 2,
+        "accessibilityLabel": "Bar Graphic that show how long to load a bar"
+    }
+]

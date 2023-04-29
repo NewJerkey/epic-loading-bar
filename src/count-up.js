@@ -40,6 +40,11 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
           font-family: "Inter var experimental", "Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
           color: #414141;
         }
+        @media (prefers-reduced-motion: reduce) {
+      * {
+        visibility: hidden;
+      }
+    }
       `,
     ];
   }

@@ -37,7 +37,7 @@ class SmartLoadingBar extends IntersectionObserverMixin(LitElement) {
 
     .counter {
       position: absolute;
-      left: 79%;
+      left: 78%;
       bottom: 36%;
     }
 
